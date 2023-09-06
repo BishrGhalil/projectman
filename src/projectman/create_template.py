@@ -1,13 +1,17 @@
-import os
-import yaml
-from projectman.prints import error
-import json
-
 import fnmatch
+import json
+import os
+
+import yaml
+
+from projectman.prints import error
 
 
 def create_template_from_project(
-    path: str | os.PathLike, read_hidden_files=False, include_files_content=True, ignore=()
+    path: str | os.PathLike,
+    read_hidden_files=False,
+    include_files_content=True,
+    ignore=(),
 ) -> dict:
     project = {"name": os.path.basename(path), "type": "directory", "children": []}
     for ent in os.scandir(path):

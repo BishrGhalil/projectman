@@ -1,7 +1,9 @@
 import sys
 import traceback
 
-from colorama import Fore, Style, init
+from colorama import Fore
+from colorama import Style
+from colorama import init
 
 init(autoreset=True)
 
@@ -39,7 +41,7 @@ def print(
     file=sys.stdout,
     flush=False,
     color=Style.RESET_ALL,
-    style=Style.RESET_ALL
+    style=Style.RESET_ALL,
 ):
     values = list(map(str, values))
     for i in range(len(values)):
@@ -56,7 +58,7 @@ def info(*values, sep="", end="\n", file=sys.stdout, flush=False):
         file=file,
         flush=flush,
         color=INFO_FORE,
-        style=Style.BRIGHT
+        style=Style.BRIGHT,
     )
 
 
@@ -68,7 +70,7 @@ def warn(*values, sep="", end="\n", file=sys.stdout, flush=False):
         file=file,
         flush=flush,
         color=WARN_FORE,
-        style=Style.BRIGHT
+        style=Style.BRIGHT,
     )
 
 
@@ -80,7 +82,7 @@ def error(*values, sep="", end="\n", file=sys.stdout, flush=False):
         file=file,
         flush=flush,
         color=ERROR_FORE,
-        style=Style.BRIGHT
+        style=Style.BRIGHT,
     )
 
 

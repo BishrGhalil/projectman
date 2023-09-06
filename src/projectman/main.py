@@ -2,10 +2,17 @@ import argparse
 import os
 import sys
 
-from projectman.prints import error, info, print, warn, exception, cstr
 from projectman.const import CONFIG_PATH
-from projectman.create_template import create_template_from_project, save_template
-from projectman.create_project import create_project_from_template, TemplateParseError
+from projectman.create_project import TemplateParseError
+from projectman.create_project import create_project_from_template
+from projectman.create_template import create_template_from_project
+from projectman.create_template import save_template
+from projectman.prints import cstr
+from projectman.prints import error
+from projectman.prints import exception
+from projectman.prints import info
+from projectman.prints import print
+from projectman.prints import warn
 
 
 def init_args():
