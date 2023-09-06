@@ -14,13 +14,7 @@ def init_args():
     parser.add_argument(
         "-t", "--template", required=False, help="template file path of template name"
     )
-    parser.add_argument(
-        "--print-template-path",
-        action="store_true",
-        default=False,
-        required=False,
-        help="prints template storage path",
-    )
+
     parser.add_argument(
         "-o",
         "--out",
@@ -28,7 +22,8 @@ def init_args():
         default=os.getcwd(),
         required=False,
     )
-    parser.add_argument(
+    create_group = parser.add_argument_group("create template")
+    create_group.add_argument(
         "-c",
         "--create-template",
         help="creates template from the current project structure in the current working directory if `--out` is not specified",
@@ -36,20 +31,20 @@ def init_args():
         required=False,
         default=False,
     )
-    parser.add_argument(
+    create_group.add_argument(
         "--read-hidden-files",
         action="store_true",
         default=False,
         required=False,
         help="read hidden files content",
     )
-    parser.add_argument(
+    create_group.add_argument(
         "--ignore",
         required=False,
-        help="files and directories to ignore when creating template",
+        help="files and directories to be ignored when creating template, supports glob format",
         nargs="*",
     )
-    parser.add_argument(
+    create_group.add_argument(
         "--include-files-content",
         required=False,
         help="include files content in the template file",
@@ -57,12 +52,33 @@ def init_args():
         default=True,
     )
 
+    info_group = parser.add_argument_group("info")
+    info_group.add_argument(
+        "--print-template-path",
+        action="store_true",
+        default=False,
+        required=False,
+        help="prints template storage path",
+    )
+    info_group.add_argument(
+        "--list-templates",
+        action="store_true",
+        default=False,
+        required=False,
+        help="prints templates",
+    )
     args = parser.parse_args()
     _parser_error_func = parser.error
     parser.error = lambda m: _parser_error_func(cstr(m, color="red", style="bold"))
 
+    info("Templates:")
+    if args.list_templates:
+        for i in os.listdir(CONFIG_PATH):
+            info("  - " + os.path.splitext(i)[0])
+        exit(0)
     if args.print_template_path:
         info(CONFIG_PATH)
+        exit(0)
     if args.template and not args.name:
         parser.error("The `--name` argument is required when `--template` is provided.")
     if args.name and not (args.template or args.create_template):
