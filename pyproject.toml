@@ -1,3 +1,27 @@
+[project]
+name = "projectman"
+version = "1.0.0"
+authors = [
+  { name="Beshr Alghalil", email="beshrghalil@protonmail.com" },
+]
+description = "creates projects from templates"
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ["projects", "templates"]
+dependencies = [
+    "colorama",
+    'pyyaml',
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/BishrGhalil/projectman"
+
+
 [tool.poetry]
 name = "projectman"
 version = "1.0.0"
@@ -15,3 +39,6 @@ pyyaml = "^6.0.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[project.scripts]
+projectman = "projectman.main:main"

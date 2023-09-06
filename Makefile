@@ -3,8 +3,7 @@ PYTHON=python3
 all:
 
 install:
-	${PYTHON} -m pipx install poetry
-	${PYTHON} setup.py install_exec install --optimize=1 --record=install_log.log
+	${PYTHON} setup.py install --optimize=1 --record=install_log.log
 
 test:
 	${PYTHON} -m pytest
