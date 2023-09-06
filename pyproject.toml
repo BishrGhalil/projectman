@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "projectman"
+version = "1.0.0"
+description = "Creates projects from templates"
+authors = ["beshr <beshrghalil@protonmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+colorama = "^0.4.6"
+pyyaml = "^6.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
