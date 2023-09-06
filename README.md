@@ -2,6 +2,8 @@
 create projects from templates
 
 ### install
+
+#### Linux
 ```
 git clone https://github.com/BishrGhalil/projectman
 cd projectman

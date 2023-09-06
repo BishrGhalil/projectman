@@ -3,7 +3,7 @@ PYTHON=python3
 all:
 
 install:
-	${PYTHON} setup.py install --optimize=1 --record=install_log.log
+	${PYTHON} setup.py install --optimize=1 --record=install_log.log --user
 
 test:
 	${PYTHON} -m pytest
