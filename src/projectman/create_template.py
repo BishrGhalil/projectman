@@ -15,7 +15,7 @@ def create_template_from_project(
 ) -> dict:
     project = {"name": os.path.basename(path), "type": "directory", "children": []}
     for ent in os.scandir(path):
-        if any(fnmatch.fnmatch(ent.name, pattern) for pattern in ignore):
+        if ignore and any(fnmatch.fnmatch(ent.name, pattern) for pattern in ignore):
             continue
         if ent.is_dir():
             if ent.name.startswith("."):
